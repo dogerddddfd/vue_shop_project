@@ -6,6 +6,7 @@ import './plugins/element.js'
 import './assets/css/global.css'
 
 Vue.config.productionTip = false
+Vue.config.devtools=true
 
 import axios from 'axios'
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'

@@ -48,7 +48,7 @@
                      :index="'/' + subItem.path + ''"
                      v-for="subItem in item.children"
                      :key="subItem.id"
-                     @click="saveNavState('/'+subItem.path)"
+                     @click="saveNavState('/' + subItem.path)"
                   >
                      <template slot="title">
                         <!-- 图标 -->
@@ -84,12 +84,12 @@ export default {
          // 是否折叠
          isCollapse: false,
          // 激活导航
-         activePath:''
+         activePath: '',
       }
    },
    created() {
       this.getMenuList()
-      this.activePath=window.sessionStorage.getItem('activePath')
+      this.activePath = window.sessionStorage.getItem('activePath')
    },
    methods: {
       // 登出
@@ -109,10 +109,10 @@ export default {
          this.isCollapse = !this.isCollapse
       },
       // 保存导航激活状态
-      saveNavState(activePath){
-         window.sessionStorage.setItem('activePath',activePath)
-         this.activePath=activePath
-      }
+      saveNavState(activePath) {
+         window.sessionStorage.setItem('activePath', activePath)
+         this.activePath = activePath
+      },
    },
 }
 </script>
@@ -122,7 +122,6 @@ export default {
 <style lang="less" scoped>
 .home-container {
    height: 100%;
-   overflow: hidden;
 }
 .el-header {
    background-color: #373d41;
@@ -144,16 +143,14 @@ export default {
 
 .el-aside {
    background-color: #333744;
-
-   overflow: hidden;
    .el-menu {
       border: none;
       .el-menu-item {
          padding-left: 50px !important;
       }
       .el-submenu /deep/ .el-submenu__title {
-         padding-left:0 !important;
-         padding-right:30px !important
+         padding-left: 0 !important;
+         padding-right: 30px !important;
       }
    }
 }
