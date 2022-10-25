@@ -29,7 +29,10 @@
 
             <!-- 添加 -->
             <el-col :span="4">
-               <el-button type="primary" @click="addDialogVisable = true"
+               <el-button
+                  type="primary"
+                  @click="addDialogVisable = true"
+                  style="margin-left: 30px"
                   >添加用户</el-button
                >
             </el-col>
@@ -99,7 +102,7 @@
             @current-change="handleCurrentChange"
             :current-page="queryInfo.pagenum"
             :page-sizes="[2, 3, 4, 5]"
-            :page-size="100"
+            :page-size="queryInfo.pagesize"
             layout="total, sizes, prev, pager, next, jumper"
             :total="total"
          >
@@ -254,7 +257,7 @@ export default {
          // 角色列表
          rolesList: [],
          // 选中新角色id
-         selectRoleId:'',
+         selectRoleId: '',
          //  分配权限对话框可见性
          allotRoleDialogVisable: false,
          // 用户表单规则
@@ -396,7 +399,11 @@ export default {
 
       // 分配角色对话框显示
       async showAllotRoleDialog(user) {
-         this.userInfo = { id:user.id,username: user.username, roleName: user.role_name }
+         this.userInfo = {
+            id: user.id,
+            username: user.username,
+            roleName: user.role_name,
+         }
 
          const { data: res } = await this.$http.get('roles')
          if (res.meta.status !== 200)
@@ -406,10 +413,16 @@ export default {
 
          this.allotRoleDialogVisable = true
       },
-      async allotRole(){
-         if(!this.selectRoleId) return this.$message.error('请选择要分配的角色！')
-         const {data:res} = await this.$http.put(`users/${this.userInfo.id}/role`,{rid:this.selectRoleId})
-         if(res.meta.status !== 200)return this.$message.error('更新角色失败！')
+      async allotRole() {
+         if (!this.selectRoleId)
+            return this.$message.error('请选择要分配的角色！')
+         const {
+            data: res,
+         } = await this.$http.put(`users/${this.userInfo.id}/role`, {
+            rid: this.selectRoleId,
+         })
+         if (res.meta.status !== 200)
+            return this.$message.error('更新角色失败！')
 
          this.$message.success('更新角色成功！')
 
@@ -419,9 +432,9 @@ export default {
       },
       // 监测分配角色框关闭
       allotRoleDialogClosed() {
-         this.selectRoleId=''
-         this.userInfo={}
-         this.rolesList=[]
+         this.selectRoleId = ''
+         this.userInfo = {}
+         this.rolesList = []
       },
 
       // 根据id删除用户
