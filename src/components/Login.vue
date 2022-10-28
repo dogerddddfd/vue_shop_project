@@ -153,7 +153,7 @@ export default {
 }
 
 .btns {
-   display: flex;
-   justify-content: end;
+   display: flex; 
+   justify-content: flex-end; 
 }
-</style>
+</style> 

@@ -152,7 +152,7 @@ export default {
       .el-menu-item {
          padding-left: 50px !important;
       }
-      .el-submenu /deep/ .el-submenu__title {
+      .el-submenu :deep(.el-submenu__title)  {
          padding-left: 0 !important;
          padding-right: 30px !important;
       }

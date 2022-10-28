@@ -5,14 +5,20 @@ import router from './router'
 import './plugins/element.js'
 import './assets/css/global.css'
 
+// 树状表
 import TreeTable from 'vue-table-with-tree-grid'
 Vue.component('tree-table',TreeTable)
 
+// 文本输入
 import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
 Vue.use(VueQuillEditor, /* { default global options } */)
+
+// 导入Nprogress
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 
 Vue.filter('dataFormat',function(originVal){
@@ -33,10 +39,18 @@ Vue.config.devtools=true
 
 import axios from 'axios'
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
+// 展示进度条
 axios.interceptors.request.use((config) => {
+  NProgress.start()
   config.headers.Authorization=window.sessionStorage.getItem('token')
   return config
 })
+// 隐藏进度条
+axios.interceptors.response.use(config =>{
+  NProgress.done()
+  return config
+})
+
 Vue.prototype.$http = axios
 
 
