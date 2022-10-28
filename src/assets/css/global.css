@@ -5,6 +5,9 @@ html,body,#app{
     padding: 0;
     min-width: 1050px;
 }
+#app{
+    text-align: start;
+}
 
 .el-breadcrumb{
     margin-bottom: 15px;
