@@ -2,8 +2,8 @@
    <el-container class="home-container">
       <!-- 头部 -->
       <el-header>
-         <div>
-            <img src="../assets/logo.png" alt="logo" style="height: 60px" />
+         <div @click="toHeader()" style="cursor: pointer;">
+            <img src="../assets/logo.png" alt="logo" style="height: 60px"  />
             <span>电商后台管理系统</span>
          </div>
          <el-button type="info" @click="logout">退出登录</el-button>
@@ -96,6 +96,10 @@ export default {
       logout() {
          window.sessionStorage.clear()
          this.$router.push('/login')
+      },
+      // 点击标题
+      toHeader() {
+         this.$router.push('/welcome')
       },
       // 更新菜单
       async getMenuList() {
