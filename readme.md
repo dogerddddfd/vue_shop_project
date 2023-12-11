@@ -24,23 +24,23 @@
 
 ### 启动
 ```sh
-   # vue_shop
+# vue_shop
    docker-compose up -d
 ```
 
 * 或不用docker-compose：
 ```sh
-   # vue_shop
-   # 创建docker网络
+# vue_shop
+# 创建docker网络
    docker networks create d bridge  vue-shop-net
-   # 创建卷
+# 创建卷
    docker volume create vue-shop_shop-db-volume
-   # 创建镜像
+# 创建镜像
    cd mysql
    docker build -t shop-mysql
    cd ../server
    docker build -t shop-server
-   # 启动容器
+# 启动容器
    docker run -itd  --name shop-mysql -p 3306:3306 -v vue-shop_shop-db-volume:/var/lib/mysql --network vue-shop-net shop-mysql
    docker run -itd --name shop-server -p 8888:8888 --network vue-shop-net shop-server
 ```
