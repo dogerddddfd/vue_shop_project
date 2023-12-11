@@ -48,4 +48,4 @@
 ### 访问
 * [电商后台管理系统](127.0.0.1:8888/home)
 
-# [项目来源：黑马程序员](【【黑马程序员】前端开发之Vue项目实战_Element-UI【配套源码+笔记】】 https://www.bilibili.com/video/BV1x64y1S7S7/)
+# [项目来源：黑马程序员](https://www.bilibili.com/video/BV1x64y1S7S7/)
