@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+  mysql:
+    image: shop-mysql
+    container_name: "shop-mysql"
+    build: ./mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - "shop-db-volume:/var/lib/mysql"
+    networks:
+      - persist
+
+  server: 
+    image: shop-server
+    container_name: "shop-server"
+    build: ./server
+    ports:
+      - "8888:8888"
+    networks:
+      - persist
+    depends_on:
+      - mysql
+
+volumes:
+  shop-db-volume:
+networks:
+
+  persist:
+    external:
+      name: vue-shop-net
