@@ -1,4 +1,5 @@
 vue_shop_project/node_modules
-
-
 server/node_modules
+
+*.lnk
+*.code-workspace
