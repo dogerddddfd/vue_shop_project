@@ -6,7 +6,7 @@ import 'nprogress/nprogress.css'
 
 const api = axios.create({
   //  baseURL : 'http://127.0.0.1:8888/api/private/v1/',
-   baseURL : 'http://192.168.3.78:8888/api/private/v1/',
+   baseURL : 'http://192.168.1.11:8888/api/private/v1/',
   //  baseURL : '/api',
    timeout:50000,
 })

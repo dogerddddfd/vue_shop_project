@@ -4,6 +4,7 @@ services:
   mysql:
     image: shop-mysql
     container_name: "shop-mysql"
+    
     build: ./mysql
     ports:
       - "3306:3306"
@@ -11,8 +12,13 @@ services:
       - "shop-db-volume:/var/lib/mysql"
     networks:
       - persist
+    healthcheck:
+      test: ["CMD-SHELL", "mysql -uroot -p123456"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
 
-  server: 
+  server:
     image: shop-server
     container_name: "shop-server"
     build: ./server
@@ -21,7 +27,8 @@ services:
     networks:
       - persist
     depends_on:
-      - mysql
+      mysql:
+        condition: "service_healthy"
 
 volumes:
   shop-db-volume:
